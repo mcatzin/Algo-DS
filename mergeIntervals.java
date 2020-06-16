@@ -52,3 +52,15 @@ class MergeIntervals {
     return mergedIntervals;
   }
 }
+
+/*
+time complexity: O(N*logN)
+N is the total number of intervals. We are iterating the intervals only once which will take
+O(N), in the beginning though, since we need to sort the intervals. Sorting
+takes worst case O(N*logN)
+
+space: O(N)
+
+
+
+*/
