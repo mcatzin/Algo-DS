@@ -12,16 +12,28 @@ Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-
 */
 
 class Solution {
-    public int maxProfit(int[] prices) {
-        int min = Integer.MAX_VALUE;
-        int max = 0;
+    // public int maxProfit(int[] prices) {
+    //     int min = Integer.MAX_VALUE;
+    //     int max = 0;
         
-        for(int i = 0; i < prices.length; i++){
-            min = Math.min(min, prices[i]);
-            max = Math.max(max, prices[i] - min);
+    //     for(int i = 0; i < prices.length; i++){
+    //         min = Math.min(min, prices[i]);
+    //         max = Math.max(max, prices[i] - min);
+    //     }
+        
+    //     return max;
+    // }
+
+    public int maxProfit(int[] prices){
+        int n =prices.length, maxProfitSoFar = 0;
+        int[] maxIncDiffSum = new int[n];
+
+        for(int i = 1; i < n; i++){
+            maxIncDiffSum[i] =Math.max(0, maxIncDiffSum[i-1] + prices[i] - prices[i-1]);
+            maxProfitSoFar = Math.max(maxProfitSoFar, maxIncDiffSum[i]);
         }
-        
-        return max;
+
+        return maxProfitSoFar
     }
 }
 
